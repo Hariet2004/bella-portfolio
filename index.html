@@ -1,1086 +1,283 @@
-<title>Rosebella Adek Ouma</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap">
-
-<style>
-/*
-  Layout: single-page scroll — sticky nav, full-bleed hero, stacked content sections
-  Color: forest green / warm gold / off-white
-  Type: Cormorant Garamond (display) + DM Sans (body)
-*/
-:root {
-  --bg: #FAFAF7;
-  --surface: #FFFFFF;
-  --forest: #1C3A2A;
-  --forest-mid: #2C5240;
-  --gold: #9A7535;
-  --gold-light: #C9A458;
-  --text: #1A1A1A;
-  --text-mid: #3D3D3D;
-  --muted: #6B6B60;
-  --border: #E2DDD5;
-  --border-light: #EDE9E2;
-  --hero-text: #F0EDE6;
-  --hero-muted: #A8C4B4;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #101A13;
-    --surface: #162016;
-    --forest: #1C3A2A;
-    --forest-mid: #2C5240;
-    --gold: #C9A458;
-    --gold-light: #E2C07A;
-    --text: #F0EDE6;
-    --text-mid: #D4D0C8;
-    --muted: #8A8A7A;
-    --border: #2A3D2F;
-    --border-light: #213028;
-    --hero-text: #F0EDE6;
-    --hero-muted: #7AAA90;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #101A13;
-  --surface: #162016;
-  --forest: #1C3A2A;
-  --forest-mid: #2C5240;
-  --gold: #C9A458;
-  --gold-light: #E2C07A;
-  --text: #F0EDE6;
-  --text-mid: #D4D0C8;
-  --muted: #8A8A7A;
-  --border: #2A3D2F;
-  --border-light: #213028;
-  --hero-text: #F0EDE6;
-  --hero-muted: #7AAA90;
-  color-scheme: dark;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* NAV */
-nav {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 100;
-  background: var(--forest);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 clamp(16px, 5vw, 64px);
-  height: 56px;
-  gap: 16px;
-}
-
-.nav-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--hero-text);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: clamp(16px, 3vw, 36px);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  color: var(--hero-muted);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--gold-light); }
-
-/* HERO */
-.hero {
-  background: var(--forest);
-  padding: clamp(56px, 10vw, 96px) clamp(16px, 5vw, 64px) clamp(48px, 8vw, 80px);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 45%;
-  height: 100%;
-  background: var(--forest-mid);
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.hero-eyebrow span {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-}
-
-.hero-eyebrow-line {
-  width: 32px;
-  height: 1px;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-
-.hero-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(3rem, 9vw, 6.5rem);
-  font-weight: 700;
-  color: var(--hero-text);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  margin: 0 0 8px;
-  text-wrap: balance;
-}
-
-.hero-name em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--gold-light);
-}
-
-.hero-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--hero-muted);
-  margin: 16px 0 36px;
-  letter-spacing: 0.01em;
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: 0;
-}
-
-.hero-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--hero-muted);
-  font-size: 0.85rem;
-  font-weight: 400;
-}
-
-.hero-meta-item .label {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-right: 2px;
-}
-
-.hero-meta-item .value {
-  color: var(--hero-text);
-  font-weight: 500;
-}
-
-/* MAIN CONTENT */
-main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 5vw, 64px);
-}
-
-/* SECTION */
-section {
-  padding: clamp(48px, 8vw, 80px) 0;
-  border-bottom: 1px solid var(--border);
-}
-section:last-child { border-bottom: none; }
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 36px;
-}
-
-.section-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  white-space: nowrap;
-}
-
-.section-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 28px;
-  line-height: 1.15;
-  text-wrap: balance;
-}
-
-/* ABOUT */
-.about-text {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--text-mid);
-  max-width: 680px;
-}
-
-/* EXPERIENCE TIMELINE */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 0 32px;
-  position: relative;
-}
-
-.timeline-item + .timeline-item {
-  margin-top: 0;
-}
-
-.timeline-item + .timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 140px;
-  top: 0;
-  width: 1px;
-  height: 28px;
-  background: var(--border);
-  transform: translateX(15px);
-}
-
-.timeline-date {
-  padding-top: 20px;
-  text-align: right;
-}
-
-.timeline-date-range {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.timeline-date-now {
-  display: inline-block;
-  margin-top: 4px;
-  background: var(--gold);
-  color: #fff;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-
-.timeline-body {
-  padding: 20px 0 36px;
-  border-left: 1px solid var(--border);
-  padding-left: 32px;
-  position: relative;
-}
-
-.timeline-body::before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  top: 27px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 2px solid var(--bg);
-}
-
-.timeline-role {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 2px;
-  line-height: 1.25;
-}
-
-.timeline-company {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.timeline-bullets {
-  margin: 0;
-  padding-left: 16px;
-  color: var(--text-mid);
-  font-size: 0.88rem;
-  line-height: 1.65;
-}
-
-.timeline-bullets li { margin-bottom: 4px; }
-
-/* EDUCATION */
-.edu-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.edu-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 24px 28px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px 24px;
-  align-items: start;
-}
-
-.edu-degree {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 4px;
-  line-height: 1.3;
-  grid-column: 1;
-}
-
-.edu-institution {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  grid-column: 1;
-}
-
-.edu-year {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--muted);
-  white-space: nowrap;
-  grid-column: 2;
-  grid-row: 1 / 3;
-  padding-top: 2px;
-  text-align: right;
-}
-
-.edu-note {
-  font-size: 0.83rem;
-  color: var(--muted);
-  margin-top: 10px;
-  line-height: 1.5;
-  grid-column: 1 / 3;
-}
-
-.edu-badge {
-  display: inline-block;
-  background: var(--forest);
-  color: var(--hero-muted);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 2px;
-  margin-right: 6px;
-  margin-top: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .edu-badge {
-    background: var(--forest-mid);
-    color: var(--hero-muted);
-  }
-}
-
-:root[data-theme="dark"] .edu-badge {
-  background: var(--forest-mid);
-  color: var(--hero-muted);
-}
-
-/* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-}
-
-.skills-group-title {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 0 0 14px;
-}
-
-.skills-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skill-tag {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text-mid);
-  font-size: 0.82rem;
-  font-weight: 400;
-  padding: 5px 12px;
-  border-radius: 2px;
-  line-height: 1;
-}
-
-/* VOLUNTEER */
-.vol-item {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.vol-stripe {
-  width: 3px;
-  background: var(--gold);
-  border-radius: 2px;
-  flex-shrink: 0;
-  align-self: stretch;
-}
-
-.vol-content {}
-.vol-role {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 2px;
-}
-.vol-org {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.vol-date {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.vol-bullets {
-  margin: 0;
-  padding-left: 16px;
-  color: var(--text-mid);
-  font-size: 0.87rem;
-  line-height: 1.65;
-}
-.vol-bullets li { margin-bottom: 3px; }
-
-/* INTERESTS */
-.interests-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.interest-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  padding: 10px 18px;
-  font-size: 0.87rem;
-  color: var(--text-mid);
-}
-
-.interest-chip svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--gold);
-  fill: none;
-  flex-shrink: 0;
-}
-
-/* CONTACT FOOTER */
-footer {
-  background: var(--forest);
-  padding: clamp(40px, 7vw, 72px) clamp(16px, 5vw, 64px);
-  margin-top: 0;
-}
-
-.footer-inner {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.footer-headline {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  font-weight: 600;
-  color: var(--hero-text);
-  margin: 0 0 8px;
-  line-height: 1.1;
-}
-
-.footer-sub {
-  color: var(--hero-muted);
-  font-size: 0.9rem;
-  margin: 0 0 36px;
-}
-
-.contact-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 40px;
-}
-
-.contact-item {}
-
-.contact-item-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-
-.contact-item-value {
-  font-size: 0.9rem;
-  color: var(--hero-text);
-  font-weight: 400;
-  user-select: text;
-}
-
-.copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: 8px;
-  background: transparent;
-  border: 1px solid var(--forest-mid);
-  border-radius: 2px;
-  color: var(--hero-muted);
-  font-size: 0.68rem;
-  font-family: inherit;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
-}
-.copy-btn:hover { border-color: var(--gold); color: var(--gold-light); }
-.copy-btn.copied { color: var(--gold-light); border-color: var(--gold); }
-
-.footer-bottom {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid var(--forest-mid);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.footer-bottom-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--hero-muted);
-}
-
-.footer-bottom-location {
-  font-size: 0.78rem;
-  color: var(--hero-muted);
-  letter-spacing: 0.04em;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .timeline-item {
-    grid-template-columns: 1fr;
-  }
-  .timeline-date {
-    text-align: left;
-    padding-top: 0;
-    padding-bottom: 4px;
-  }
-  .timeline-body {
-    border-left: none;
-    padding-left: 0;
-  }
-  .timeline-body::before { display: none; }
-  .timeline-item + .timeline-item::before { display: none; }
-
-  .edu-card {
-    grid-template-columns: 1fr;
-  }
-  .edu-year {
-    grid-column: 1;
-    grid-row: auto;
-    text-align: left;
-    margin-bottom: 4px;
-    order: -1;
-  }
-
-  .nav-links { gap: 12px; }
-  .nav-links a { font-size: 0.7rem; }
-}
-
-@media (max-width: 420px) {
-  .nav-name { font-size: 0.9rem; }
-  .nav-links li:nth-child(n+4) { display: none; }
-}
-
-/* FOCUS */
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--gold-light);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
-}
-</style>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-name">Rosebella Adek</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Accountant &amp; Tax Consultant</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rosebella Adek — Accountant & Tax Consultant</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">Rosebella Adek</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <h1 class="hero-name">Rosebella<br><em>Adek Ouma</em></h1>
-    <p class="hero-title">Finance management · Tax advisory · Business administration</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="label">Based in</span>
-        <span class="value">Nairobi, Kenya</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="label">CPA</span>
-        <span class="value">Level 3 in progress</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="label">Languages</span>
-        <span class="value">English · Swahili</span>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner hero-no-photo">
+      <div class="hero-text">
+        <h1>Rosebella Adek Ouma</h1>
+        <div class="hero-roles">
+          <span>Accountant</span>
+          <span>Tax Consultant</span>
+          <span>Finance Manager</span>
+          <span>Financial Analyst</span>
+        </div>
+        <p class="hero-bio">Driven and detail-oriented finance professional with a strong background in business administration, financial analysis, and tax consultancy. Currently managing accounts and administration for a real estate web startup while advising an investment firm — combining strategic financial thinking with meticulous execution.</p>
+        <div class="hero-links">
+          <a href="#contact" class="btn">Get In Touch</a>
+          <a href="#experience" class="btn btn-ghost">Experience</a>
+          <a href="#about" class="btn btn-ghost">About</a>
+          <a href="April-ROSEBELLA ADEK CV FINAL VERSION .pdf" download="Rosebella_Adek_CV.pdf" class="btn btn-ghost">Download CV</a>
+        </div>
+        <div class="hero-socials">
+          <a href="mailto:bella.kamau@outlook.com">Email</a>
+          <a href="tel:+254796868984">+254 (0)79 686 8984</a>
+          <span class="hero-social-text">Nairobi, Kenya</span>
+        </div>
       </div>
     </div>
-  </div>
-</header>
-
-<!-- MAIN -->
-<main>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="section-header">
-      <span class="section-label">Profile</span>
-      <div class="section-rule"></div>
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I'm an Accountant and Tax Consultant based in Nairobi, Kenya, with a strong background in <strong>financial reporting, budget management, procurement, and strategic business administration</strong>. I hold a Bachelor of Science in Business Administration (Accounting Major) from Kiriri Women's University, a Diploma in Procurement and Supply Chain Management, and I'm currently completing CPA Level 3.</p>
+
+      <div class="skills-grid">
+        <div class="skill-box">
+          <h4>Finance & Accounting</h4>
+          <p>Financial Reporting · Budget Management · Tax Consultancy · Cost Accounting · Accounts Reconciliation · Audit Support · Financial Modelling</p>
+        </div>
+        <div class="skill-box">
+          <h4>Analysis & Research</h4>
+          <p>Financial Analysis · Market Research · Data Analysis & Reporting · Financial Forecasting · Revenue Optimisation · Business Planning</p>
+        </div>
+        <div class="skill-box">
+          <h4>Operations & Procurement</h4>
+          <p>Procurement Management · Inventory Management · Supplier Negotiation · Record Keeping · Team Coordination · Process Improvement</p>
+        </div>
+        <div class="skill-box">
+          <h4>Communication & IT</h4>
+          <p>Public Speaking · Report Writing · Stakeholder Relations · Microsoft Office Suite · Accounting Software · English & Swahili</p>
+        </div>
+      </div>
     </div>
-    <h2 class="section-title">A driven finance professional<br>with a sharp eye for detail</h2>
-    <p class="about-text">
-      I bring a strong foundation in business administration, financial analysis, and tax consultancy, shaped by hands-on experience across startups, public service, and corporate environments. Currently managing administration and financial accounts for a real estate web platform while advising an investment startup, I combine strategic financial thinking with practical execution. My adaptability, communication skills, and commitment to rigorous record-keeping make me a dependable asset to any organisation navigating growth.
-    </p>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-header">
-      <span class="section-label">Career</span>
-      <div class="section-rule"></div>
-    </div>
-    <h2 class="section-title">Work Experience</h2>
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="exp-list">
 
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Mar 2025 –<br>Present</div>
-          <div class="timeline-date-now">Current</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Personal Assistant to Real Estate Consultant</div>
-          <div class="timeline-company">Real Estate Consultancy · Nairobi</div>
-          <ul class="timeline-bullets">
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Personal Assistant to Real Estate Consultant</h3>
+            <span>March 2025 – Present</span>
+          </div>
+          <h4>Real Estate Consultancy &nbsp;·&nbsp; Nairobi, Kenya</h4>
+          <ul>
             <li>Coordinating client meetings, property viewings, and contract preparations</li>
             <li>Managing schedules, calls, and emails to ensure efficient operations</li>
             <li>Maintaining client databases and tracking leads to support business growth</li>
             <li>Handling confidential documents and ensuring proper record keeping</li>
           </ul>
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Present<br>Remote</div>
-          <div class="timeline-date-now">Current</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Administrator &amp; Finance Accountant</div>
-          <div class="timeline-company">Real Estate Website Startup · Remote</div>
-          <ul class="timeline-bullets">
-            <li>Overseeing financial accounts with accuracy in budget allocations and expenditures</li>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Administrator & Finance Accountant</h3>
+            <span>Present · Remote</span>
+          </div>
+          <h4>Real Estate Website Startup &nbsp;·&nbsp; Remote</h4>
+          <ul>
+            <li>Overseeing financial accounts, ensuring accuracy in budget allocations and expenditures to maintain financial health</li>
             <li>Developing and implementing financial strategies to optimise revenue and manage operational costs</li>
-            <li>Collaborating with leadership to align financial goals with overall business objectives</li>
-            <li>Preparing detailed financial reports and delivering actionable insights to drive growth</li>
-            <li>Maintaining internal controls to ensure compliance with financial regulations</li>
+            <li>Collaborating with the leadership team to align financial goals with overall business objectives</li>
+            <li>Preparing detailed financial reports, analysing data, and providing actionable insights to drive growth</li>
+            <li>Maintaining robust internal controls to ensure compliance with financial regulations and standards</li>
             <li>Managing administrative functions including process improvements and team coordination</li>
           </ul>
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Nov 2022 –<br>Present</div>
-          <div class="timeline-date-now">Current</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Financial Analyst &amp; Personal Assistant</div>
-          <div class="timeline-company">Invest in Kenya Startup · Remote</div>
-          <ul class="timeline-bullets">
-            <li>Conducting financial analysis, market research, and identifying potential revenue streams</li>
-            <li>Supporting the CEO with day-to-day operations, scheduling, and stakeholder correspondence</li>
-            <li>Building financial models and forecasts to deliver data-driven insights</li>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Financial Analyst & Personal Assistant</h3>
+            <span>November 2022 – Present</span>
+          </div>
+          <h4>Invest in Kenya Startup &nbsp;·&nbsp; Remote</h4>
+          <ul>
+            <li>Conducting financial analysis and market research to identify potential revenue streams</li>
+            <li>Assisting the CEO in managing day-to-day operations, scheduling, and correspondence</li>
+            <li>Preparing reports and presentations to communicate financial data to internal and external stakeholders</li>
+            <li>Developing financial models and forecasts to provide data-driven insights to the CEO</li>
             <li>Assisting with fundraising efforts, investor relations, and business plan development</li>
-            <li>Preparing reports and presentations for internal and external stakeholders</li>
           </ul>
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Jun 2024 –<br>Aug 2024</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Accounting Intern</div>
-          <div class="timeline-company">Bei Sawa Supermarket · Nairobi</div>
-          <ul class="timeline-bullets">
-            <li>Entering financial transactions and maintaining accurate records of sales and expenses</li>
-            <li>Assisting in preparation of financial statements, balance sheets, and income statements</li>
-            <li>Reconciling bank statements and accounts payable/receivable</li>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Accounting Intern</h3>
+            <span>June 2024 – August 2024</span>
+          </div>
+          <h4>Bei Sawa Supermarket &nbsp;·&nbsp; Nairobi, Kenya</h4>
+          <ul>
+            <li>Entering financial transactions into accounting software to ensure accurate records of sales, expenses, and financial data</li>
+            <li>Assisting in preparing financial statements, balance sheets, and income statements under senior supervision</li>
+            <li>Reconciling bank statements and accounts payable/receivable to ensure records were accurate and up to date</li>
             <li>Supporting budget monitoring and assisting during internal and external audits</li>
-            <li>Tracking inventory purchases, sales, and adjustments to maintain accurate records</li>
+            <li>Tracking and recording inventory purchases, sales, and adjustments</li>
           </ul>
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Jan 2020 –<br>Apr 2020</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Procurement Officer</div>
-          <div class="timeline-company">Ewaso Ngiro Leather Factory</div>
-          <ul class="timeline-bullets">
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Procurement Officer</h3>
+            <span>January 2020 – April 2020</span>
+          </div>
+          <h4>Ewaso Ngiro Leather Factory</h4>
+          <ul>
             <li>Managing the procurement process — requesting quotes, negotiating prices, and issuing purchase orders</li>
-            <li>Maintaining accurate records of purchases, invoices, and delivery schedules</li>
-            <li>Communicating with suppliers to ensure timely delivery and resolve quality issues</li>
-            <li>Analysing procurement data to identify trends, cost drivers, and improvement areas</li>
+            <li>Maintaining accurate records of purchases, invoices, and delivery schedules using an inventory management system</li>
+            <li>Communicating with suppliers to ensure timely delivery and resolve delivery or quality issues</li>
+            <li>Analysing procurement data to identify trends, cost drivers, and areas for improvement</li>
           </ul>
         </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <div class="timeline-date-range">Apr 2020 –<br>Apr 2021</div>
-        </div>
-        <div class="timeline-body">
-          <div class="timeline-role">Social Worker</div>
-          <div class="timeline-company">Ministry of Transport, Infrastructure, Housing &amp; Urban Development</div>
-          <ul class="timeline-bullets">
-            <li>Spearheading street cleaning projects in Narok town in collaboration with community organisations and government authorities</li>
-            <li>Leading teams and managing project timelines with strong critical thinking and organisational skills</li>
+        <div class="exp-item">
+          <div class="exp-header">
+            <h3>Social Worker</h3>
+            <span>April 2020 – April 2021</span>
+          </div>
+          <h4>Ministry of Transport, Infrastructure, Housing & Urban Development</h4>
+          <ul>
+            <li>Organising and spearheading street cleaning projects in Narok town, collaborating with community organisations and government authorities</li>
+            <li>Encouraging community involvement through effective communication and awareness campaigns</li>
+            <li>Exhibiting strong leadership, project management, and critical thinking skills</li>
             <li>Maintaining meticulous records of operations and enforcing proper waste disposal procedures</li>
           </ul>
         </div>
+
       </div>
 
-    </div>
-  </section>
+      <!-- EDUCATION -->
+      <div class="edu-section" id="education">
+        <h2>Education</h2>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="section-header">
-      <span class="section-label">Education</span>
-      <div class="section-rule"></div>
-    </div>
-    <h2 class="section-title">Academic Background</h2>
-
-    <div class="edu-grid">
-
-      <div class="edu-card">
-        <div class="edu-degree">Certified Public Accountant (CPA)</div>
-        <div class="edu-institution">KASNEB · Kenya</div>
-        <div class="edu-year">Ongoing</div>
-        <div class="edu-note">
-          <span class="edu-badge">Level 1 &amp; 2 Passed</span>
-          <span class="edu-badge">Level 3 In Progress</span>
-          <br><br>
-          Covering Financial Accounting &amp; Reporting (FAR), Auditing &amp; Attestation (AUD), Business Environment &amp; Concepts (BEC), and Regulation (REG) — equipping comprehensive expertise in accounting, taxation, and business law.
+        <div class="edu-card">
+          <h3>BSc Business Administration — Accounting Major</h3>
+          <h4>Kiriri Women's University of Science and Technology &nbsp;·&nbsp; Sep 2021 – Oct 2024</h4>
+          <p>Core units: Financial Accounting, Managerial Accounting, Cost Accounting, International Accounting</p>
+          <p style="margin-top:6px">Multidisciplinary: Business Law, Entrepreneurship, Strategic Management, Business Ethics, Business Communication</p>
+          <p style="margin-top:6px">Languages: English (Fluent · Professional) &nbsp;·&nbsp; Swahili (Fluent · Native)</p>
         </div>
-      </div>
 
-      <div class="edu-card">
-        <div class="edu-degree">BSc Business Administration — Accounting Major</div>
-        <div class="edu-institution">Kiriri Women's University of Science and Technology</div>
-        <div class="edu-year">Sep 2021 – Oct 2024</div>
-        <div class="edu-note">
-          Core units in Financial Accounting, Managerial Accounting, Cost Accounting, and International Accounting. Multidisciplinary studies in Business Law, Entrepreneurship, Strategic Management, and Business Ethics.
+        <div class="edu-card">
+          <h3>Diploma in Procurement & Supply Chain Management</h3>
+          <h4>Kiriri Women's University of Science and Technology &nbsp;·&nbsp; May 2019 – 2020</h4>
+          <p>Core units: Supply chain management, inventory management, warehousing, purchasing management</p>
+          <p style="margin-top:6px">Multidisciplinary: Economics, Cost Accounting, Financial Accounting, Entrepreneurship</p>
         </div>
-      </div>
 
-      <div class="edu-card">
-        <div class="edu-degree">Diploma in Procurement &amp; Supply Chain Management</div>
-        <div class="edu-institution">Kiriri Women's University of Science and Technology</div>
-        <div class="edu-year">May 2019 – 2020</div>
-        <div class="edu-note">
-          Core studies in supply chain management, inventory management, warehousing, and purchasing management, complemented by economics and financial accounting.
+        <h2>Certifications & Professional Qualifications</h2>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span>CPA — Financial Accounting & Reporting (FAR)</span>
+            <div class="cert-right">
+              <span class="cert-date">Passed</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span>CPA — Auditing & Attestation (AUD)</span>
+            <div class="cert-right">
+              <span class="cert-date">Passed</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span>CPA — Business Environment & Concepts (BEC)</span>
+            <div class="cert-right">
+              <span class="cert-date">Passed</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span>CPA — Regulation (REG)</span>
+            <div class="cert-right">
+              <span class="cert-date">Passed</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span>CPA Level 3</span>
+            <div class="cert-right">
+              <span class="cert-date in-progress">In Progress</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header">
-      <span class="section-label">Expertise</span>
-      <div class="section-rule"></div>
-    </div>
-    <h2 class="section-title">Skills &amp; Competencies</h2>
-
-    <div class="skills-grid">
-      <div>
-        <div class="skills-group-title">Finance &amp; Accounting</div>
-        <div class="skills-tags">
-          <span class="skill-tag">Financial Analysis</span>
-          <span class="skill-tag">Financial Reporting</span>
-          <span class="skill-tag">Tax Consultancy</span>
-          <span class="skill-tag">Budget Management</span>
-          <span class="skill-tag">Accounts Reconciliation</span>
-          <span class="skill-tag">Audit Support</span>
-          <span class="skill-tag">Financial Modelling</span>
-          <span class="skill-tag">Cost Accounting</span>
+        <!-- VOLUNTEER -->
+        <h2 style="margin-top: 56px;">Volunteer Work</h2>
+        <div class="edu-card">
+          <h3>Community Health Volunteer</h3>
+          <h4>Narok County Referral Hospital &nbsp;·&nbsp; January 2021 – April 2021</h4>
+          <p>Provided vaccination services to children, conducted confidential HIV testing and counselling, administered deworming treatments, and collaborated with healthcare professionals to improve community health outcomes.</p>
         </div>
-      </div>
 
-      <div>
-        <div class="skills-group-title">Operations &amp; Management</div>
-        <div class="skills-tags">
-          <span class="skill-tag">Procurement Management</span>
-          <span class="skill-tag">Inventory Management</span>
-          <span class="skill-tag">Supplier Negotiation</span>
-          <span class="skill-tag">Market Research</span>
-          <span class="skill-tag">Administrative Management</span>
-          <span class="skill-tag">Record Keeping</span>
-          <span class="skill-tag">Team Coordination</span>
-        </div>
-      </div>
-
-      <div>
-        <div class="skills-group-title">Communication &amp; Technology</div>
-        <div class="skills-tags">
-          <span class="skill-tag">Public Speaking</span>
-          <span class="skill-tag">Report Writing</span>
-          <span class="skill-tag">Stakeholder Relations</span>
-          <span class="skill-tag">Microsoft Office Suite</span>
-          <span class="skill-tag">Accounting Software</span>
-          <span class="skill-tag">Data Entry &amp; Analysis</span>
-          <span class="skill-tag">English · Swahili</span>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- VOLUNTEER -->
-  <section>
-    <div class="section-header">
-      <span class="section-label">Community</span>
-      <div class="section-rule"></div>
-    </div>
-    <h2 class="section-title">Volunteer Work</h2>
-
-    <div class="vol-item">
-      <div class="vol-stripe"></div>
-      <div class="vol-content">
-        <div class="vol-role">Community Health Volunteer</div>
-        <div class="vol-org">Narok County Referral Hospital</div>
-        <div class="vol-date">January 2021 – April 2021</div>
-        <ul class="vol-bullets">
-          <li>Providing vaccination services to children and maintaining accurate immunisation records</li>
-          <li>Conducting confidential HIV testing and counselling with empathy</li>
-          <li>Administering deworming treatments and promoting child health and well-being</li>
-          <li>Collaborating with healthcare professionals and community members to improve outcomes</li>
-        </ul>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p class="contact-intro">Open to new opportunities in accounting, finance, and tax consultancy. Feel free to reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:bella.kamau@outlook.com">
+          <strong>Email</strong>
+          <span>bella.kamau@outlook.com</span>
+        </a>
+        <a href="tel:+254796868984">
+          <strong>Phone</strong>
+          <span>+254 (0)79 686 8984</span>
+        </a>
+        <a href="#about">
+          <strong>Location</strong>
+          <span>Nairobi, Kenya</span>
+        </a>
+        <a href="#about">
+          <strong>Availability</strong>
+          <span>Open to Opportunities</span>
+        </a>
       </div>
+
+      <a href="April-ROSEBELLA ADEK CV FINAL VERSION .pdf" download="Rosebella_Adek_CV.pdf" class="cv-download-card">
+        <div class="cv-download-icon">↓</div>
+        <div>
+          <strong>Download CV</strong>
+          <span>Rosebella Adek Ouma — Accountant & Tax Consultant</span>
+        </div>
+      </a>
     </div>
   </section>
 
-  <!-- INTERESTS -->
-  <section>
-    <div class="section-header">
-      <span class="section-label">Beyond Work</span>
-      <div class="section-rule"></div>
-    </div>
-    <h2 class="section-title">Interests</h2>
-    <div class="interests-row">
-      <div class="interest-chip">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-        </svg>
-        Creative Writing
-      </div>
-      <div class="interest-chip">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-        </svg>
-        Volunteering
-      </div>
-      <div class="interest-chip">
-        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 17l4-8 4 4 3-6 4 6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        Hiking &amp; Nature
-      </div>
-    </div>
-  </section>
+  <footer>
+    <p>&copy; 2026 Rosebella Adek Ouma · Nairobi, Kenya</p>
+  </footer>
 
-</main>
-
-<!-- FOOTER / CONTACT -->
-<footer id="contact">
-  <div class="footer-inner">
-    <h2 class="footer-headline">Let's work together</h2>
-    <p class="footer-sub">Open to new opportunities in accounting, finance, and tax consultancy.</p>
-
-    <div class="contact-items">
-      <div class="contact-item">
-        <div class="contact-item-label">Email</div>
-        <div class="contact-item-value">
-          bella.kamau@outlook.com
-          <button class="copy-btn" data-copy="bella.kamau@outlook.com" aria-label="Copy email">Copy</button>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Mobile</div>
-        <div class="contact-item-value">
-          +254 (0)79 686 8984
-          <button class="copy-btn" data-copy="+254796868984" aria-label="Copy phone">Copy</button>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Location</div>
-        <div class="contact-item-value">Nairobi, Kenya</div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span class="footer-bottom-name">Rosebella Adek Ouma</span>
-      <span class="footer-bottom-location">Nairobi, Kenya &nbsp;·&nbsp; Accountant &amp; Tax Consultant</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = btn.dataset.copy;
-      const orig = btn.textContent;
-      try {
-        navigator.clipboard.writeText(text).then(() => {
-          btn.textContent = 'Copied!';
-          btn.classList.add('copied');
-          setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
-        }).catch(() => fallback(text, btn, orig));
-      } catch {
-        fallback(text, btn, orig);
-      }
-    });
-  });
-
-  function fallback(text, btn, orig) {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000); } catch {}
-    document.body.removeChild(ta);
-  }
-</script>
+  <script src="script.js"></script>
+</body>
+</html>
